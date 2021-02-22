@@ -18,12 +18,15 @@ public class MainActivity extends AppCompatActivity {
     TextView count_text;
     TextView count_preview;
     TextView oper_text;
+
     CircularSeekBar seekbar;
     Button btn_plus;
     Button btn_minus;
     Button btn_multi;
     Button btn_divide;
     Button btn_equal;
+    Button btn_delete;
+    Button btn_reset;
     Stack<Character> stack;
 
 
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         btn_multi = findViewById(R.id.btn_multi);
         btn_divide = findViewById(R.id.btn_divide);
         btn_equal = findViewById(R.id.btn_equal);
+        // update Button
+        btn_delete = findViewById(R.id.btn_delete);
+        btn_reset = findViewById(R.id.btn_reset);
 
         setEvent();
     }
@@ -99,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
                 count_text.setText(result);
             }
         });
+
+
+
     }
 
     public class CircleSeekBarListener implements CircularSeekBar.OnCircularSeekBarChangeListener {
@@ -235,6 +244,34 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        btn_delete.setOnClickListener(new View.OnClickListener(){
+            
+            // delete 버튼 - 한 자씩 제거
+            @Override
+            public void onClick(View v) {
+                Log.d("Button_delete","Success");
+
+                String stringTempCount = count_text.getText().toString();
+                count_text.setText(stringTempCount.substring(0, stringTempCount.length()-1));
+
+                String stringTempOper = oper_text.getText().toString();
+                oper_text.setText(stringTempOper.substring(0,stringTempOper.length()-1));
+
+                opStack.pop();
+            }
+        });
+
+        btn_reset.setOnClickListener(new View.OnClickListener(){
+            
+            // reset button - 초기화
+            @Override
+            public void onClick(View v) {
+                Log.d("Button_reset", "Success");
+                opStack.clear();
+                count_text.setText(null);
+                oper_text.setText(null);
+            }
+        });
 
         double re = Double.parseDouble(calculatorStack.peek()); //Stack Top 데이터
         String result = String.format("%.10f", re); //소수점 10째짜리

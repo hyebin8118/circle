@@ -43,9 +43,11 @@
             android:layout_height="wrap_content">
 
             <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/progress_circular"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
-                android:id="@+id/progress_circular"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 app:cs_circle_color="@color/gray"
                 app:cs_circle_fill="@color/white"
                 app:cs_circle_progress_color="@color/light_black"
@@ -72,10 +74,8 @@
                 app:cs_pointer_stroke_width="30dp"
                 app:cs_progress="0"
                 app:cs_start_angle="-90"
-                app:cs_use_custom_radii="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                />
+                app:cs_use_custom_radii="true" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,9 +94,9 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="35dp">
+            android:layout_marginTop="15dp">
 
             <Button
                 android:layout_width="wrap_content"
@@ -142,10 +142,37 @@
                 android:text="="
                 android:layout_weight="1"
                 android:textSize="30dp"
+                android:layout_marginRight="10dp"
                 />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_delete"
+                android:text="◀"
+                android:textSize="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_reset"
+                android:text="Reset"
+                android:textSize="30dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
 
 </LinearLayout>
