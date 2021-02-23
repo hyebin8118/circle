@@ -106,7 +106,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_delete.setOnClickListener(new View.OnClickListener(){
 
+            // delete 버튼 - 한 자씩 제거
+            @Override
+            public void onClick(View v) {
+                Log.d("Button_delete","Success");
+
+                String stringTempCount = count_text.getText().toString();
+                count_text.setText(stringTempCount.substring(0, stringTempCount.length()-1));
+
+                String stringTempOper = oper_text.getText().toString();
+
+                // Error -
+                //oper_text.setText(stringTempOper.substring(0,stringTempOper.length()-1));
+            }
+        });
+
+        btn_reset.setOnClickListener(new View.OnClickListener(){
+
+            // reset button - 초기화
+            @Override
+            public void onClick(View v) {
+                Log.d("Button_reset", "Success");
+                count_text.setText(null);
+                oper_text.setText(null);
+            }
+        });
 
     }
 
@@ -244,34 +270,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        btn_delete.setOnClickListener(new View.OnClickListener(){
-            
-            // delete 버튼 - 한 자씩 제거
-            @Override
-            public void onClick(View v) {
-                Log.d("Button_delete","Success");
 
-                String stringTempCount = count_text.getText().toString();
-                count_text.setText(stringTempCount.substring(0, stringTempCount.length()-1));
-
-                String stringTempOper = oper_text.getText().toString();
-                oper_text.setText(stringTempOper.substring(0,stringTempOper.length()-1));
-
-                opStack.pop();
-            }
-        });
-
-        btn_reset.setOnClickListener(new View.OnClickListener(){
-            
-            // reset button - 초기화
-            @Override
-            public void onClick(View v) {
-                Log.d("Button_reset", "Success");
-                opStack.clear();
-                count_text.setText(null);
-                oper_text.setText(null);
-            }
-        });
 
         double re = Double.parseDouble(calculatorStack.peek()); //Stack Top 데이터
         String result = String.format("%.10f", re); //소수점 10째짜리
